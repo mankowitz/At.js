@@ -402,6 +402,7 @@
             break;
           case KEY_CODE.TAB:
           case KEY_CODE.ENTER:
+          case KEY_CODE.SPACE:
             if (!view.visible()) {
               return;
             }
@@ -511,7 +512,7 @@
         $inputor = this.$inputor;
         str = '' + str;
         source = $inputor.val();
-        start_str = source.slice(0, this.query['head_pos'] || 0);
+        start_str = source.slice(0, this.query['head_pos']-1 || 0);
         text = "" + start_str + str + " " + (source.slice(this.query['end_pos'] || 0));
         $inputor.val(text);
         $inputor.caret('pos', start_str.length + str.length + 1);
@@ -722,7 +723,8 @@
       UP: 38,
       ESC: 27,
       TAB: 9,
-      ENTER: 13
+      ENTER: 13,
+      SPACE: 32
     };
     DEFAULT_CALLBACKS = {
       before_save: function(data) {
